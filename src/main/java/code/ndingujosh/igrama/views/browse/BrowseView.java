@@ -17,9 +17,8 @@ import com.vaadin.flow.component.dependency.JsModule;
 
 @Route(value = "browse", layout = MainView.class)
 @PageTitle("Browse nouns")
-@CssImport("./views/browsenouns/browsenouns-view.css")
-@Tag("browsenouns-view")
-@JsModule("./views/browsenouns/browsenouns-view.js")
+@CssImport("./views/browse/browse-view.css")
+@Tag("browse-view")
 public class BrowseView extends PolymerTemplate<BrowsenounsViewModel> implements AfterNavigationObserver {
 
     // This is the Java companion file of a design

@@ -17,9 +17,8 @@ import com.vaadin.flow.component.dependency.JsModule;
 @Route(value = "enter", layout = MainView.class)
 @RouteAlias(value = "", layout = MainView.class)
 @PageTitle("Enter an noun")
-@CssImport("./views/enterannoun/enterannoun-view.css")
-@Tag("enterannoun-view")
-@JsModule("./views/enterannoun/enterannoun-view.js")
+@CssImport("./views/enter/enter-view.css")
+@Tag("enter-view")
 public class EnterView extends PolymerTemplate<TemplateModel> {
 
     @Id
