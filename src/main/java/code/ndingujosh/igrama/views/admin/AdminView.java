@@ -12,7 +12,6 @@ import com.vaadin.flow.router.Route;
 @PageTitle("Admin")
 @CssImport("./views/admin/admin-view.css")
 @Tag("admin-view")
-@JsModule("./views/admin/admin-view.js")
 public class AdminView extends VerticalLayout {
 
 }
