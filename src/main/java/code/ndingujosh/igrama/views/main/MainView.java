@@ -16,12 +16,8 @@ import com.vaadin.flow.component.tabs.TabVariant;
 import com.vaadin.flow.component.tabs.Tabs;
 import com.vaadin.flow.router.RouterLink;
 import com.vaadin.flow.server.PWA;
-import com.vaadin.flow.theme.Theme;
-import com.vaadin.flow.router.Route;
-import com.vaadin.flow.router.PageTitle;
-import code.ndingujosh.igrama.views.main.MainView;
-import code.ndingujosh.igrama.views.enterannoun.EnterannounView;
-import code.ndingujosh.igrama.views.browsenouns.BrowsenounsView;
+import code.ndingujosh.igrama.views.enter.EnterView;
+import code.ndingujosh.igrama.views.browse.BrowseView;
 import code.ndingujosh.igrama.views.admin.AdminView;
 import com.vaadin.flow.component.dependency.JsModule;
 import com.vaadin.flow.component.dependency.CssImport;
@@ -78,8 +74,8 @@ public class MainView extends AppLayout {
     }
 
     private static Tab[] getAvailableTabs() {
-        return new Tab[]{createTab("Enter an noun", EnterannounView.class),
-                createTab("Browse nouns", BrowsenounsView.class), createTab("Admin", AdminView.class)};
+        return new Tab[]{createTab("Enter an noun", EnterView.class),
+                createTab("Browse nouns", BrowseView.class), createTab("Admin", AdminView.class)};
     }
 
     private static Tab createTab(String text, Class<? extends Component> navigationTarget) {
