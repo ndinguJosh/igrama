@@ -1,22 +1,13 @@
-package code.ndingujosh.igrama.views.browsenouns;
+package code.ndingujosh.igrama.views.browse;
 
 import java.util.Arrays;
 import java.util.List;
 
-import com.vaadin.flow.component.charts.Chart;
-import com.vaadin.flow.component.charts.model.Configuration;
-import com.vaadin.flow.component.charts.model.Crosshair;
-import com.vaadin.flow.component.charts.model.ListSeries;
-import com.vaadin.flow.component.charts.model.XAxis;
-import com.vaadin.flow.component.charts.model.YAxis;
-import com.vaadin.flow.component.grid.Grid;
-import com.vaadin.flow.component.polymertemplate.Id;
 import com.vaadin.flow.component.polymertemplate.PolymerTemplate;
-import com.vaadin.flow.data.renderer.TemplateRenderer;
 import com.vaadin.flow.router.AfterNavigationEvent;
 import com.vaadin.flow.router.AfterNavigationObserver;
 import com.vaadin.flow.templatemodel.TemplateModel;
-import code.ndingujosh.igrama.views.browsenouns.BrowsenounsView.BrowsenounsViewModel;
+import code.ndingujosh.igrama.views.browse.BrowseView.BrowsenounsViewModel;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.router.PageTitle;
 import code.ndingujosh.igrama.views.main.MainView;
@@ -29,7 +20,7 @@ import com.vaadin.flow.component.dependency.JsModule;
 @CssImport("./views/browsenouns/browsenouns-view.css")
 @Tag("browsenouns-view")
 @JsModule("./views/browsenouns/browsenouns-view.js")
-public class BrowsenounsView extends PolymerTemplate<BrowsenounsViewModel> implements AfterNavigationObserver {
+public class BrowseView extends PolymerTemplate<BrowsenounsViewModel> implements AfterNavigationObserver {
 
     // This is the Java companion file of a design
     // You can find the design file inside /frontend/views/
@@ -45,7 +36,7 @@ public class BrowsenounsView extends PolymerTemplate<BrowsenounsViewModel> imple
         public void setItems(List<Person> items);
     }
 
-    public BrowsenounsView() {
+    public BrowseView() {
     }
 
     @Override

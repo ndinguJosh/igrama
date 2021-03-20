@@ -1,4 +1,4 @@
-package code.ndingujosh.igrama.views.browsenouns;
+package code.ndingujosh.igrama.views.browse;
 
 public class Person {
 

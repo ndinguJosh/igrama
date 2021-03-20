@@ -1,4 +1,4 @@
-package code.ndingujosh.igrama.views.enterannoun;
+package code.ndingujosh.igrama.views.enter;
 
 import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.button.Button;
@@ -20,7 +20,7 @@ import com.vaadin.flow.component.dependency.JsModule;
 @CssImport("./views/enterannoun/enterannoun-view.css")
 @Tag("enterannoun-view")
 @JsModule("./views/enterannoun/enterannoun-view.js")
-public class EnterannounView extends PolymerTemplate<TemplateModel> {
+public class EnterView extends PolymerTemplate<TemplateModel> {
 
     @Id
     private TextField name;
@@ -28,7 +28,7 @@ public class EnterannounView extends PolymerTemplate<TemplateModel> {
     @Id
     private Button sayHello;
 
-    public EnterannounView() {
+    public EnterView() {
         sayHello.addClickListener(e -> {
             Notification.show("Hello " + name.getValue());
         });
