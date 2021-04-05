@@ -18,7 +18,7 @@ public class Noun extends AbstractEntity {
     private String root;
 
     @ManyToOne
-    @JoinColumn(name = "class_id", nullable = false)
+    @JoinColumn(name = "noun_class_id", nullable = false)
     private NounClass nounClass;
 
     public String getPrefix() {
