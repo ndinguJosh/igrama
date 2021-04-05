@@ -51,6 +51,14 @@ public class NounClass extends AbstractEntity {
 
     @NotNull
     @NotEmpty
+    private String possessiveHead;
+
+    @NotNull
+    @NotEmpty
+    private String possessiveTail;
+
+    @NotNull
+    @NotEmpty
     private String demonstrative1;
 
     @NotNull
@@ -141,6 +149,22 @@ public class NounClass extends AbstractEntity {
 
     public void setExcPronoun(String excPronoun) {
         this.excPronoun = excPronoun;
+    }
+
+    public String getPossessiveHead() {
+        return possessiveHead;
+    }
+
+    public void setPossessiveHead(String possessiveHead) {
+        this.possessiveHead = possessiveHead;
+    }
+
+    public String getPossessiveTail() {
+        return possessiveTail;
+    }
+
+    public void setPossessiveTail(String possessiveTail) {
+        this.possessiveTail = possessiveTail;
     }
 
     public String getDemonstrative1() {

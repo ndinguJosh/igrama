@@ -5,10 +5,11 @@ import code.ndingujosh.igrama.data.AbstractEntity;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "nouns")
-public class Noun extends AbstractEntity {
+public class Noun extends AbstractEntity implements Cloneable {
+
     @NotNull
     @NotEmpty
     private String prefix;
@@ -20,6 +21,12 @@ public class Noun extends AbstractEntity {
     @ManyToOne
     @JoinColumn(name = "noun_class_id", nullable = false)
     private NounClass nounClass;
+
+    private String englishTranslation;
+
+    @NotNull
+    @NotEmpty
+    private LocalDateTime dateTimeCreated;
 
     public String getPrefix() {
         return prefix;
@@ -43,5 +50,21 @@ public class Noun extends AbstractEntity {
 
     public void setNounClass(NounClass nounClass) {
         this.nounClass = nounClass;
+    }
+
+    public String getEnglishTranslation() {
+        return englishTranslation;
+    }
+
+    public void setEnglishTranslation(String englishTranslation) {
+        this.englishTranslation = englishTranslation;
+    }
+
+    public LocalDateTime getDateTimeCreated() {
+        return dateTimeCreated;
+    }
+
+    public void setDateTimeCreated(LocalDateTime dateTimeCreated) {
+        this.dateTimeCreated = dateTimeCreated;
     }
 }
