@@ -1,0 +1,25 @@
+.home {
+    align-self: center;
+    align-content: center;
+    justify-content: stretch;
+    padding: 5%;
+}
+
+.card {
+    border-radius: 15px;
+    box-shadow: 0 0 40px -3px #d9dede;
+    width: 100%;
+    padding: 3%;
+}
+
+.card .tag {
+    background-color: blueviolet;
+    color: white;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 10px;
+}
+
+.card .tags {
+    margin-top: 5px;
+}
