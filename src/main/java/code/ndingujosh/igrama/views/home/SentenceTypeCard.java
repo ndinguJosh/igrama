@@ -1,14 +1,11 @@
-package code.ndingujosh.igrama.views;
+package code.ndingujosh.igrama.views.home;
 
-import com.vaadin.flow.component.button.Button;
+import code.ndingujosh.igrama.views.IconButton;
 import com.vaadin.flow.component.dependency.CssImport;
-import com.vaadin.flow.component.html.Div;
-import com.vaadin.flow.component.html.H3;
 import com.vaadin.flow.component.html.H4;
 import com.vaadin.flow.component.html.Span;
-import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
-import com.vaadin.flow.component.orderedlayout.FlexComponent;
+import com.vaadin.flow.component.orderedlayout.FlexLayout;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 
@@ -19,7 +16,7 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 @CssImport("./views/shared-styles.css")
 public class SentenceTypeCard extends HorizontalLayout {
 
-    private String[] colours = {"darkolivegreen", "darkblue", "darkcyan", "darkgreen", "darkmagenta", "darkred", "darkslategrey", "deeppink", "dodgerblue"}; // colours to be randomly chosen for tags
+    private String[] colors = {"darkolivegreen", "darkblue", "darkcyan", "darkgreen", "darkmagenta", "darkred", "darkslategrey", "deeppink", "dodgerblue"}; // colors to be randomly chosen for tags
 
     // TODO: Change this to accept SentenceType object from db as parameter
     // TODO: Give the same tags the same colours
@@ -35,16 +32,13 @@ public class SentenceTypeCard extends HorizontalLayout {
         expand(summaryLayout);
     }
 
-    private HorizontalLayout createTagsLayout(String tags) {
-        HorizontalLayout tagsLayout = new HorizontalLayout();
-        tagsLayout.addClassName("tags");
-        tagsLayout.setSpacing(true);
+    // TODO Change this method to receive a List instead of comma-separated String
+    private FlexLayout createTagsLayout(String tags) {
+        FlexLayout tagsLayout = new FlexLayout();
+        tagsLayout.setFlexWrap(FlexLayout.FlexWrap.WRAP);
 
         for (String tag : tags.split(",")) {
-            Span colourTag = new Span(tag);
-            colourTag.addClassName("tag");
-            colourTag.getStyle().set("background-color", colours[(int) (Math.random() * colours.length)]);
-            tagsLayout.add(colourTag);
+            tagsLayout.add(new Tag(tag, colors[(int) (Math.random() * colors.length)]));
         }
 
         return tagsLayout;
