@@ -6,8 +6,10 @@ import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
+@Table(name = "noun")
 public class Noun extends AbstractEntity implements Cloneable {
 
     @NotNull
@@ -27,6 +29,20 @@ public class Noun extends AbstractEntity implements Cloneable {
     @NotNull
     @NotEmpty
     private LocalDateTime dateTimeCreated;
+
+    @ManyToMany
+    @JoinTable(
+            name = "active_noun_verb_possibilities",
+            joinColumns = @JoinColumn(name = "noun"),
+            inverseJoinColumns = @JoinColumn(name = "verb"))
+    private List<Verb> activeVerbs;
+
+    @ManyToMany
+    @JoinTable(
+            name = "passive_noun_verb_possibilities",
+            joinColumns = @JoinColumn(name = "noun"),
+            inverseJoinColumns = @JoinColumn(name = "verb"))
+    private List<Verb> passiveVerbs;
 
     public String getPrefix() {
         return prefix;
@@ -66,5 +82,21 @@ public class Noun extends AbstractEntity implements Cloneable {
 
     public void setDateTimeCreated(LocalDateTime dateTimeCreated) {
         this.dateTimeCreated = dateTimeCreated;
+    }
+
+    public List<Verb> getActiveVerbs() {
+        return activeVerbs;
+    }
+
+    public void setActiveVerbs(List<Verb> activeVerbs) {
+        this.activeVerbs = activeVerbs;
+    }
+
+    public List<Verb> getPassiveVerbs() {
+        return passiveVerbs;
+    }
+
+    public void setPassiveVerbs(List<Verb> passiveVerbs) {
+        this.passiveVerbs = passiveVerbs;
     }
 }
