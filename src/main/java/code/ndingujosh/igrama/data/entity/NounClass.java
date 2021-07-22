@@ -2,28 +2,30 @@ package code.ndingujosh.igrama.data.entity;
 
 import code.ndingujosh.igrama.data.AbstractEntity;
 
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
 
 @Entity
+@Table(name = "noun_class")
 public class NounClass extends AbstractEntity {
 
     @OneToMany(mappedBy = "nounClass")
     private List<Noun> nouns = new LinkedList<>();
 
     @NotNull
-    @NotEmpty
+    @NotNull
     private String nounClassName;
 
-    @ElementCollection
-    @NotEmpty
-    private Set<String> prefixes;
+    @OneToMany(mappedBy = "nounClass")
+    @NotNull
+    private List<NounPrefix> prefixes;
+
+    //TODO: Add a corresponding plural or singular class field
 
     @NotNull
     @NotEmpty
@@ -95,11 +97,11 @@ public class NounClass extends AbstractEntity {
         this.nounClassName = nounClassName;
     }
 
-    public Set<String> getPrefixes() {
+    public List<NounPrefix> getPrefixes() {
         return prefixes;
     }
 
-    public void setPrefixes(Set<String> prefixes) {
+    public void setPrefixes(List<NounPrefix> prefixes) {
         this.prefixes = prefixes;
     }
 
