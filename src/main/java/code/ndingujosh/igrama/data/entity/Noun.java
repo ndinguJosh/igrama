@@ -35,16 +35,16 @@ public class Noun extends AbstractEntity implements Cloneable {
 
     @ManyToMany
     @JoinTable(
-            name = "active_noun_verb_possibilities",
-            joinColumns = @JoinColumn(name = "noun"),
-            inverseJoinColumns = @JoinColumn(name = "verb"))
+            name = "active_noun_verb_possibility",
+            joinColumns = @JoinColumn(name = "noun_id"),
+            inverseJoinColumns = @JoinColumn(name = "verb_id"))
     private List<Verb> activeVerbs;
 
     @ManyToMany
     @JoinTable(
-            name = "passive_noun_verb_possibilities",
-            joinColumns = @JoinColumn(name = "noun"),
-            inverseJoinColumns = @JoinColumn(name = "verb"))
+            name = "passive_noun_verb_possibility",
+            joinColumns = @JoinColumn(name = "noun_id"),
+            inverseJoinColumns = @JoinColumn(name = "verb_id"))
     private List<Verb> passiveVerbs;
 
     public NounPrefix getPrefix() {
@@ -71,11 +71,11 @@ public class Noun extends AbstractEntity implements Cloneable {
         this.nounClass = nounClass;
     }
 
-    public String getEnglishTranslation() {
+    public List<String> getEnglishTranslation() {
         return englishTranslation;
     }
 
-    public void setEnglishTranslation(String englishTranslation) {
+    public void setEnglishTranslation(List<String> englishTranslation) {
         this.englishTranslation = englishTranslation;
     }
 
