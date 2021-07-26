@@ -2,6 +2,7 @@ package code.ndingujosh.igrama.data.entity;
 
 import code.ndingujosh.igrama.data.AbstractEntity;
 
+import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
@@ -16,17 +17,18 @@ public class Verb extends AbstractEntity {
 
     private String passiveRoot;
 
+    @Column(name = "latent_i")
     private boolean latentI;
 
     @ElementCollection
     @NotNull
     @NotEmpty
-    private List<String> activeEnglishTranslations;
+    private List<String> activeEnglishTranslation;
 
     @ElementCollection
     @NotNull
     @NotEmpty
-    private List<String> passiveEnglishTranslations;
+    private List<String> passiveEnglishTranslation;
 
     @ManyToMany(mappedBy = "activeVerbs")
     private List<Noun> performers;
@@ -58,20 +60,20 @@ public class Verb extends AbstractEntity {
         this.latentI = latentI;
     }
 
-    public List<String> getActiveEnglishTranslations() {
-        return activeEnglishTranslations;
+    public List<String> getActiveEnglishTranslation() {
+        return activeEnglishTranslation;
     }
 
-    public void setActiveEnglishTranslations(List<String> activeEnglishTranslations) {
-        this.activeEnglishTranslations = activeEnglishTranslations;
+    public void setActiveEnglishTranslation(List<String> activeEnglishTranslation) {
+        this.activeEnglishTranslation = activeEnglishTranslation;
     }
 
-    public List<String> getPassiveEnglishTranslations() {
-        return passiveEnglishTranslations;
+    public List<String> getPassiveEnglishTranslation() {
+        return passiveEnglishTranslation;
     }
 
-    public void setPassiveEnglishTranslations(List<String> passiveEnglishTranslations) {
-        this.passiveEnglishTranslations = passiveEnglishTranslations;
+    public void setPassiveEnglishTranslation(List<String> passiveEnglishTranslation) {
+        this.passiveEnglishTranslation = passiveEnglishTranslation;
     }
 
     public List<Noun> getPerformers() {
