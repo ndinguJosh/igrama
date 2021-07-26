@@ -24,7 +24,10 @@ public class Noun extends AbstractEntity implements Cloneable {
     @JoinColumn(name = "noun_class_id", nullable = false)
     private NounClass nounClass;
 
-    private String englishTranslation;
+    @NotNull
+    @NotEmpty
+    @ElementCollection
+    private List<String> englishTranslation;
 
     @NotNull
     @NotEmpty
