@@ -21,9 +21,10 @@ public class NounClass extends AbstractEntity {
     @NotNull
     private String nounClassName;
 
-    @OneToMany(mappedBy = "nounClass")
     @NotNull
-    private List<NounPrefix> prefixes;
+    @NotEmpty
+    @OneToMany(mappedBy = "nounClass")
+    private List<NounPrefix> prefix;
 
     //TODO: Add a corresponding plural or singular class field
 
@@ -97,12 +98,12 @@ public class NounClass extends AbstractEntity {
         this.nounClassName = nounClassName;
     }
 
-    public List<NounPrefix> getPrefixes() {
-        return prefixes;
+    public List<NounPrefix> getPrefix() {
+        return prefix;
     }
 
-    public void setPrefixes(List<NounPrefix> prefixes) {
-        this.prefixes = prefixes;
+    public void setPrefix(List<NounPrefix> prefix) {
+        this.prefix = prefix;
     }
 
     public String getSubConcord() {

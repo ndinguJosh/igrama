@@ -12,9 +12,9 @@ import java.util.List;
 @Table(name = "noun")
 public class Noun extends AbstractEntity implements Cloneable {
 
-    @NotNull
-    @NotEmpty
-    private String prefix;
+    @ManyToOne
+    @JoinColumn(name = "prefix_id")
+    private NounPrefix prefix;
 
     @NotNull
     @NotEmpty
@@ -44,11 +44,11 @@ public class Noun extends AbstractEntity implements Cloneable {
             inverseJoinColumns = @JoinColumn(name = "verb"))
     private List<Verb> passiveVerbs;
 
-    public String getPrefix() {
+    public NounPrefix getPrefix() {
         return prefix;
     }
 
-    public void setPrefix(String prefix) {
+    public void setPrefix(NounPrefix prefix) {
         this.prefix = prefix;
     }
 
