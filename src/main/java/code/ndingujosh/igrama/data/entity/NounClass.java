@@ -42,6 +42,10 @@ public class NounClass extends AbstractEntity {
 
     @NotNull
     @NotEmpty
+    private String posConcord;
+
+    @NotNull
+    @NotEmpty
     private String absPronoun;
 
     @NotNull
@@ -74,15 +78,15 @@ public class NounClass extends AbstractEntity {
 
     @NotNull
     @NotEmpty
-    private String copLocDemonstrative1;
+    private String locCopDemonstrative1;
 
     @NotNull
     @NotEmpty
-    private String copLocDemonstrative2;
+    private String locCopDemonstrative2;
 
     @NotNull
     @NotEmpty
-    private String copLocDemonstrative3;
+    private String locCopDemonstrative3;
 
     @NotNull
     @NotEmpty
@@ -128,6 +132,14 @@ public class NounClass extends AbstractEntity {
 
     public void setObjConcord(String objConcord) {
         this.objConcord = objConcord;
+    }
+
+    public String getPosConcord() {
+        return posConcord;
+    }
+
+    public void setPosConcord(String posConcord) {
+        this.posConcord = posConcord;
     }
 
     public String getAbsPronoun() {
@@ -194,28 +206,28 @@ public class NounClass extends AbstractEntity {
         this.demonstrative3 = demonstrative3;
     }
 
-    public String getCopLocDemonstrative1() {
-        return copLocDemonstrative1;
+    public String getLocCopDemonstrative1() {
+        return locCopDemonstrative1;
     }
 
-    public void setCopLocDemonstrative1(String copLocDemonstrative1) {
-        this.copLocDemonstrative1 = copLocDemonstrative1;
+    public void setLocCopDemonstrative1(String locCopDemonstrative1) {
+        this.locCopDemonstrative1 = locCopDemonstrative1;
     }
 
-    public String getCopLocDemonstrative2() {
-        return copLocDemonstrative2;
+    public String getLocCopDemonstrative2() {
+        return locCopDemonstrative2;
     }
 
-    public void setCopLocDemonstrative2(String copLocDemonstrative2) {
-        this.copLocDemonstrative2 = copLocDemonstrative2;
+    public void setLocCopDemonstrative2(String locCopDemonstrative2) {
+        this.locCopDemonstrative2 = locCopDemonstrative2;
     }
 
-    public String getCopLocDemonstrative3() {
-        return copLocDemonstrative3;
+    public String getLocCopDemonstrative3() {
+        return locCopDemonstrative3;
     }
 
-    public void setCopLocDemonstrative3(String copLocDemonstrative3) {
-        this.copLocDemonstrative3 = copLocDemonstrative3;
+    public void setLocCopDemonstrative3(String locCopDemonstrative3) {
+        this.locCopDemonstrative3 = locCopDemonstrative3;
     }
 
     public String getEnumerative() {
