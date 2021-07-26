@@ -16,6 +16,10 @@ public class SentenceType extends AbstractEntity {
 
     @NotNull
     @NotEmpty
+    private String structure;
+
+    @NotNull
+    @NotEmpty
     private String example;
 
     @ManyToMany
