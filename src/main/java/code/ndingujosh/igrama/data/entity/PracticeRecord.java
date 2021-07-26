@@ -4,18 +4,25 @@ import code.ndingujosh.igrama.data.AbstractEntity;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import java.time.LocalDateTime;
 
 @Entity
 public class PracticeRecord extends AbstractEntity {
+
+    @NotNull
+    @NotEmpty
+    private LocalDateTime dateTimeCreated;
+
+    @OneToOne
+    private SentenceType sentenceType;
 
     @OneToOne
     private GrammarConcept grammarConcept;
 
     @OneToOne
     private NounClass nounClass;
-
-    @OneToOne
-    private SentenceType sentenceType;
 
     private boolean correct;
 
