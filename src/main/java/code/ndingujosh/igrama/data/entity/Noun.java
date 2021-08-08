@@ -20,32 +20,31 @@ public class Noun extends AbstractEntity implements Cloneable {
     @NotEmpty
     private String root;
 
+    @NotNull
     @ManyToOne
-    @JoinColumn(name = "noun_class_id", nullable = false)
+    @JoinColumn(name = "noun_class_id")
     private NounClass nounClass;
 
     @NotNull
     @NotEmpty
-    @ElementCollection
-    private List<String> englishTranslation;
+    @OneToMany(mappedBy = "noun")
+    private List<NounTranslation> translation;
 
     @NotNull
     @NotEmpty
     private LocalDateTime dateTimeCreated;
 
     @ManyToMany
-    @JoinTable(
-            name = "active_noun_verb_possibility",
-            joinColumns = @JoinColumn(name = "noun_id"),
-            inverseJoinColumns = @JoinColumn(name = "verb_id"))
-    private List<Verb> activeVerbs;
+    private List<Noun> possessors;
 
-    @ManyToMany
-    @JoinTable(
-            name = "passive_noun_verb_possibility",
-            joinColumns = @JoinColumn(name = "noun_id"),
-            inverseJoinColumns = @JoinColumn(name = "verb_id"))
-    private List<Verb> passiveVerbs;
+    @ManyToMany(mappedBy = "possessors")
+    private List<Noun> possessions;
+
+    @OneToMany(mappedBy = "noun")
+    private List<ActiveNounVerbPossibility> activeNounVerbPossibility;
+
+    @OneToMany(mappedBy = "noun")
+    private List<PassiveNounVerbPossibility> passiveNounVerbPossibility;
 
     public NounPrefix getPrefix() {
         return prefix;
@@ -71,12 +70,12 @@ public class Noun extends AbstractEntity implements Cloneable {
         this.nounClass = nounClass;
     }
 
-    public List<String> getEnglishTranslation() {
-        return englishTranslation;
+    public List<NounTranslation> getTranslation() {
+        return translation;
     }
 
-    public void setEnglishTranslation(List<String> englishTranslation) {
-        this.englishTranslation = englishTranslation;
+    public void setTranslation(List<NounTranslation> englishTranslation) {
+        this.translation = englishTranslation;
     }
 
     public LocalDateTime getDateTimeCreated() {
@@ -87,19 +86,45 @@ public class Noun extends AbstractEntity implements Cloneable {
         this.dateTimeCreated = dateTimeCreated;
     }
 
-    public List<Verb> getActiveVerbs() {
-        return activeVerbs;
+    public List<Noun> getPossessors() {
+        return possessors;
     }
 
-    public void setActiveVerbs(List<Verb> activeVerbs) {
-        this.activeVerbs = activeVerbs;
+    public void setPossessors(List<Noun> possessors) {
+        this.possessors = possessors;
     }
 
-    public List<Verb> getPassiveVerbs() {
-        return passiveVerbs;
+    public List<Noun> getPossessions() {
+        return possessions;
     }
 
-    public void setPassiveVerbs(List<Verb> passiveVerbs) {
-        this.passiveVerbs = passiveVerbs;
+    public void setPossessions(List<Noun> possessions) {
+        this.possessions = possessions;
+    }
+
+    public void addPossessor(Noun possessor) {
+        this.possessors.add(possessor);
+        possessor.possessions.add(this);
+    }
+
+    public void addPossession(Noun possession) {
+        this.possessions.add(possession);
+        possession.possessors.add(this);
+    }
+
+    public List<ActiveNounVerbPossibility> getActiveNounVerbPossibility() {
+        return activeNounVerbPossibility;
+    }
+
+    public void setActiveNounVerbPossibility(List<ActiveNounVerbPossibility> activeNounVerbPossibility) {
+        this.activeNounVerbPossibility = activeNounVerbPossibility;
+    }
+
+    public List<PassiveNounVerbPossibility> getPassiveNounVerbPossibility() {
+        return passiveNounVerbPossibility;
+    }
+
+    public void setPassiveNounVerbPossibility(List<PassiveNounVerbPossibility> passiveNounVerbPossibility) {
+        this.passiveNounVerbPossibility = passiveNounVerbPossibility;
     }
 }

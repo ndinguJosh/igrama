@@ -3,9 +3,8 @@ package code.ndingujosh.igrama.data.entity;
 import code.ndingujosh.igrama.data.AbstractEntity;
 
 import javax.persistence.Column;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.util.List;
@@ -20,21 +19,21 @@ public class Verb extends AbstractEntity {
     @Column(name = "latent_i")
     private boolean latentI;
 
-    @ElementCollection
     @NotNull
     @NotEmpty
-    private List<String> activeEnglishTranslation;
+    @OneToMany(mappedBy = "verb")
+    private List<VerbTranslation> activeTranslation;
 
-    @ElementCollection
     @NotNull
     @NotEmpty
-    private List<String> passiveEnglishTranslation;
+    @OneToMany(mappedBy = "verb")
+    private List<VerbTranslation> passiveTranslation;
 
-    @ManyToMany(mappedBy = "activeVerbs")
-    private List<Noun> performers;
+    @OneToMany(mappedBy = "verb")
+    private List<ActiveNounVerbPossibility> activeNounVerbPossibility;
 
-    @ManyToMany(mappedBy = "passiveVerbs")
-    private List<Noun> recipients;
+    @OneToMany(mappedBy = "verb")
+    private List<PassiveNounVerbPossibility> passiveNounVerbPossibility;
 
     public String getActiveRoot() {
         return activeRoot;
@@ -60,35 +59,35 @@ public class Verb extends AbstractEntity {
         this.latentI = latentI;
     }
 
-    public List<String> getActiveEnglishTranslation() {
-        return activeEnglishTranslation;
+    public List<VerbTranslation> getActiveTranslation() {
+        return activeTranslation;
     }
 
-    public void setActiveEnglishTranslation(List<String> activeEnglishTranslation) {
-        this.activeEnglishTranslation = activeEnglishTranslation;
+    public void setActiveTranslation(List<VerbTranslation> activeEnglishTranslation) {
+        this.activeTranslation = activeEnglishTranslation;
     }
 
-    public List<String> getPassiveEnglishTranslation() {
-        return passiveEnglishTranslation;
+    public List<VerbTranslation> getPassiveTranslation() {
+        return passiveTranslation;
     }
 
-    public void setPassiveEnglishTranslation(List<String> passiveEnglishTranslation) {
-        this.passiveEnglishTranslation = passiveEnglishTranslation;
+    public void setPassiveTranslation(List<VerbTranslation> passiveEnglishTranslation) {
+        this.passiveTranslation = passiveEnglishTranslation;
     }
 
-    public List<Noun> getPerformers() {
-        return performers;
+    public List<ActiveNounVerbPossibility> getActiveNounVerbPossibility() {
+        return activeNounVerbPossibility;
     }
 
-    public void setPerformers(List<Noun> performers) {
-        this.performers = performers;
+    public void setActiveNounVerbPossibility(List<ActiveNounVerbPossibility> activeNounVerbPossibility) {
+        this.activeNounVerbPossibility = activeNounVerbPossibility;
     }
 
-    public List<Noun> getRecipients() {
-        return recipients;
+    public List<PassiveNounVerbPossibility> getPassiveNounVerbPossibility() {
+        return passiveNounVerbPossibility;
     }
 
-    public void setRecipients(List<Noun> recipients) {
-        this.recipients = recipients;
+    public void setPassiveNounVerbPossibility(List<PassiveNounVerbPossibility> passiveNounVerbPossibility) {
+        this.passiveNounVerbPossibility = passiveNounVerbPossibility;
     }
 }
