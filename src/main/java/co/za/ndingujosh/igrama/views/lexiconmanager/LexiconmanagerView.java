@@ -28,7 +28,6 @@ import com.vaadin.flow.router.BeforeEnterEvent;
 import com.vaadin.flow.router.BeforeEnterObserver;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
-import com.vaadin.flow.router.RouteAlias;
 import com.vaadin.flow.spring.data.VaadinSpringDataHelpers;
 import java.util.Optional;
 import java.util.UUID;
@@ -36,12 +35,11 @@ import javax.annotation.security.RolesAllowed;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 
-@PageTitle("Lexicon manager")
+@PageTitle("Lexicon Manager")
 @Route(value = "manage/:nounID?/:action?(edit)")
-@RouteAlias(value = "")
 @RolesAllowed("admin")
 @Uses(Icon.class)
-public class LexiconmanagerView extends Div implements BeforeEnterObserver {
+public class LexiconManagerView extends Div implements BeforeEnterObserver {
 
     private final String NOUN_ID = "nounID";
     private final String NOUN_EDIT_ROUTE_TEMPLATE = "manage/%d/edit";
@@ -65,9 +63,9 @@ public class LexiconmanagerView extends Div implements BeforeEnterObserver {
 
     private NounService nounService;
 
-    public LexiconmanagerView(@Autowired NounService nounService) {
+    public LexiconManagerView(@Autowired NounService nounService) {
         this.nounService = nounService;
-        addClassNames("lexiconmanager-view", "flex", "flex-col", "h-full");
+        addClassNames("lexicon-manager-view", "flex", "flex-col", "h-full");
 
         // UserInfo is used by Collaboration Engine and is used to share details
         // of users to each other to able collaboration. Replace this with
@@ -111,7 +109,7 @@ public class LexiconmanagerView extends Div implements BeforeEnterObserver {
                 UI.getCurrent().navigate(String.format(NOUN_EDIT_ROUTE_TEMPLATE, event.getValue().getId()));
             } else {
                 clearForm();
-                UI.getCurrent().navigate(LexiconmanagerView.class);
+                UI.getCurrent().navigate(LexiconManagerView.class);
             }
         });
 
@@ -140,7 +138,7 @@ public class LexiconmanagerView extends Div implements BeforeEnterObserver {
                 clearForm();
                 refreshGrid();
                 Notification.show("Noun details stored.");
-                UI.getCurrent().navigate(LexiconmanagerView.class);
+                UI.getCurrent().navigate(LexiconManagerView.class);
             } catch (ValidationException validationException) {
                 Notification.show("An exception happened while trying to store the noun details.");
             }
@@ -160,7 +158,7 @@ public class LexiconmanagerView extends Div implements BeforeEnterObserver {
                 // when a row is selected but the data is no longer available,
                 // refresh grid
                 refreshGrid();
-                event.forwardTo(LexiconmanagerView.class);
+                event.forwardTo(LexiconManagerView.class);
             }
         }
     }
