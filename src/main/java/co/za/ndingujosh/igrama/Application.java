@@ -17,7 +17,7 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
  *
  */
 @SpringBootApplication
-@NpmPackage(value = "@fontsource/pt-sans", version = "4.5.0")
+@NpmPackage(value = "@fontsource/cousine", version = "4.5.0")
 @Theme(value = "igrama")
 @PWA(name = "igrama", shortName = "igrama", offlineResources = {"images/logo.png"})
 @Push

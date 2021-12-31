@@ -53,7 +53,7 @@ public class DataGenerator {
             userRepository.save(admin);
             logger.info("... generating 100 Noun entities...");
             ExampleDataGenerator<Noun> nounRepositoryGenerator = new ExampleDataGenerator<>(Noun.class,
-                    LocalDateTime.of(2021, 12, 19, 0, 0, 0));
+                    LocalDateTime.of(2021, 12, 29, 0, 0, 0));
             nounRepositoryGenerator.setData(Noun::setId, DataType.ID);
             nounRepositoryGenerator.setData(Noun::setNounPrefix, DataType.WORD);
             nounRepositoryGenerator.setData(Noun::setRoot, DataType.WORD);
