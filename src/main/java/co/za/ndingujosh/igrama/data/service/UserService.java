@@ -20,7 +20,7 @@ public class UserService {
         return repository.findById(id);
     }
 
-    public User update(User entity) {
+    public User save(User entity) {
         return repository.save(entity);
     }
 
