@@ -1,5 +1,6 @@
 package co.za.ndingujosh.igrama.views.lexiconmanager;
 
+import co.za.ndingujosh.igrama.data.AbstractEntity;
 import com.vaadin.flow.component.*;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
@@ -7,6 +8,7 @@ import com.vaadin.flow.component.checkbox.Checkbox;
 import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.datetimepicker.DateTimePicker;
 import com.vaadin.flow.component.formlayout.FormLayout;
+import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.html.Label;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.textfield.IntegerField;
@@ -16,6 +18,10 @@ import com.vaadin.flow.data.binder.BeanPropertySet;
 import com.vaadin.flow.data.binder.BeanValidationBinder;
 import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.data.binder.PropertyDefinition;
+import com.vaadin.flow.data.provider.*;
+import com.vaadin.flow.data.renderer.ComponentRenderer;
+import com.vaadin.flow.data.renderer.Renderer;
+import com.vaadin.flow.function.ValueProvider;
 import com.vaadin.flow.shared.Registration;
 
 import java.time.LocalDate;
@@ -29,6 +35,8 @@ public class LexiForm<T> extends FormLayout {
     // Stores component property names along with the corresponding component.
     // E.g. "nounClass" and TextField component for editing the noun class.
     private HashMap<String, HasValue<?, ?>> fieldComponentMap = new HashMap<>();
+
+    private HashMap<String, Class<?>> fieldTypeMap = new HashMap<>();
 
     private Binder<T> binder;
 
@@ -68,10 +76,26 @@ public class LexiForm<T> extends FormLayout {
         binder.setBean(bean);
     }
 
+    public void addField(String fieldName) {
+        add((Component) fieldComponentMap.get(fieldName));
+    }
+
+//    public <V extends Component> void addField(String fieldName, ValueProvider<?, V> componentProvider) {
+//        add((Renderer)(new ComponentRenderer(componentProvider)));
+//    }
+
+    public <U extends Object> void addField(String fieldName, Component component, PropertyDefinition<T, ?> field) {
+        if (field.getType().equals(component.get)) {
+
+        }
+    }
+
     private Component createFormComponent(PropertyDefinition<T, ?> field) {
         Class<?> fieldType = field.getType();
         String fieldCaption = field.getCaption();
         String fieldName = field.getName();
+
+        fieldTypeMap.put(fieldName, fieldType);
 
         // Determine property's data type, create component for it, and store it for later binding
         if (fieldType.equals(Integer.class)) {
@@ -105,6 +129,7 @@ public class LexiForm<T> extends FormLayout {
             return dateTimePicker;
 
         } else {
+            fieldComponentMap.put(fieldName, null);
             return new Label("Couldn't generate input field for " + field.getCaption() + " property");
         }
     }
